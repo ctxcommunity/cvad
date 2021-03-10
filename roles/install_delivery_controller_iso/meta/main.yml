@@ -1,0 +1,30 @@
+---
+dependencies:
+ - role: ctxcommunity.common.importpfx
+   vars:
+     certificate_pfx_name: "{{ cvad_delivery_controller_certificate_name }}"
+   when: cvad_delivery_controller_import_and_bind_pfx_certificate == 'import_and_bind'
+
+galaxy_info:
+  role_name: install_delivery_controller
+  author: Joe Shonk
+  description: Install the Citrix Delivery Controller from an .ISO file mounted from an SMB share
+  company: The Shonk Project
+
+  license: GPL-3.0-only
+
+  min_ansible_version: 2.9
+
+  platforms:
+   - name: Windows
+     versions:
+     - 2016
+     - 2019
+
+  galaxy_tags:
+    - citrix
+    - cvad
+    - vda
+    - citrixoptimizer
+    - optimizations
+    - optimizer

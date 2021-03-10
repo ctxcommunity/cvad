@@ -1,0 +1,9 @@
+---
+  smb_location: \\file1\automation
+
+  citrix_optimizer_version: 2.7.1.1
+  citrix_optimizer_smb_location: "{{ smb_location }}\\Citrix\\Citrix Optimizer\\{{ citrix_optimizer_version }}"
+  citrix_optimizer_file: .\CtxOptimizerEngine.ps1
+  citrix_optimizer_template: Citrix_Windows_Server_2019_1809_custom.xml
+  citrix_optimizer_template_smb_location: "{{ citrix_optimizer_smb_location }}\\Templates"
+  citrix_optimizer_arguments: -Source "{{ citrix_optimizer_template_smb_location }}\{{ citrix_optimizer_template }}" -Mode Execute

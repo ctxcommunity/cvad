@@ -1,0 +1,4 @@
+---
+  - name: Reboot After CVAD VDA Installation
+    win_reboot:
+      pre_reboot_delay: 10

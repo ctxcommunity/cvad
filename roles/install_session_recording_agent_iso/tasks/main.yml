@@ -1,0 +1,21 @@
+---
+  - name: Mount Citrix Virtual Applications and Desktops ISO
+    win_shell: |
+      $mountResult = Mount-DiskImage -ImagePath '{{ cvad_session_recording_agent_iso_location }}\{{ cvad_session_recording_agent_iso_file }}'
+      $driveLetter = ($mountResult | Get-Volume).DriveLetter
+      return $driveLetter
+    register: mounted_iso_drive_letter
+    changed_when: false
+    become: yes
+
+  - name: "Install Citrix Session Recorder Agent from CVAD {{ cvad_session_recording_agent_version }} ISO"
+    win_package:
+      path: "{{ mounted_iso_drive_letter.stdout[0] }}:\\{{ cvad_session_recording_agent_install_file_location }}\\{{ cvad_session_recording_agent_install_file }}"
+      product_id: "{{ cvad_session_recording_agent_product_id }}"
+      arguments: "{{ cvad_session_recording_agent_install_arguments }}"
+      state: "{{ cvad_session_recording_agent_install_state }}"
+
+  - name: Dismount Citrix Virtual Applications and Desktops ISO
+    win_shell: Dismount-DiskImage -ImagePath '{{ cvad_session_recording_agent_iso_location }}\{{ cvad_session_recording_agent_iso_file }}'
+    changed_when: false
+    become: yes

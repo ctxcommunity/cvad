@@ -1,0 +1,23 @@
+---
+dependencies:
+  - role: ctxcommunity.windows.msmq_http
+galaxy_info:
+  role_name: install_session_recording_agent_iso
+  author: Joe Shonk
+  description: Install the Citrix Session Recording Agent from an .ISO file mounted from an SMB share
+  company: The Shonk Project
+
+  license: GPL-3.0-only
+
+  min_ansible_version: 2.9
+
+  platforms:
+   - name: Windows
+     versions:
+     - all
+
+  galaxy_tags:
+    - citrix
+    - cvad
+    - sessionrecorder
+    - agent

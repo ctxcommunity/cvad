@@ -1,0 +1,57 @@
+---
+# https://docs.citrix.com/en-us/citrix-virtual-apps-desktops/install-configure/install-vdas.html
+  cvad_vda_versions:
+    1912 LTSR CU2:
+      product_id: '{89BD0C39-1C8E-44D2-9923-1167EAB7BEEB}'
+      iso_file: Citrix_Virtual_Apps_and_Desktops_7_1912_2000.iso
+      install_arguments: /enable_hdx_ports /enable_hdx_udp_ports /disableexperiencemetrics /enable_real_time_transport /enable_remote_assistance /noreboot /quiet
+    2012:
+      product_id: '{C344C994-94D2-45EC-AD93-0EBBA1E9D5DD}'
+      iso_file: Citrix_Virtual_Apps_and_Desktops_7_2012.iso
+      install_arguments: /enable_hdx_ports /enable_hdx_udp_ports /disableexperiencemetrics /enable_real_time_transport /enable_remote_assistance /noreboot /quiet
+
+  # https://docs.citrix.com/en-us/citrix-virtual-apps-desktops-service/install-configure/install-command.html
+  cvad_vda_provisioning_tools:
+    mcs:
+      install_arguments: /install_mcsio_driver /mastermcsimage
+    pvs:
+      install_arguments: /virtualmachine
+    remote pc:
+      install_arguments: /remotepc
+    none:
+      install_arguments: ~
+
+  cvad_vda_components:
+      vda only:
+        install_arguments: vda
+      vda with workspace app:
+        install_arguments: vda,plugins
+
+# Options are
+#   1912 LTSR CU2
+#   2012
+  cvad_vda_version: 1912 LTSR CU2
+# Options are
+#   pvs
+#   mcs
+#   remotepc
+#   none
+  cvad_vda_provisioning_tool: pvs
+# Options are
+#   vda only
+#   vda with workspace app
+  cvad_vda_component: vda only
+
+# Can add WEM Agent Install, for example, using the cvad_vda_includeadditional_arguments
+# Note: The WEM Agent is not included with the 1912 LTSR CU2 version of the VDA installer
+  cvad_vda_includeadditional_arguments: ~
+  cvad_vda_exclude_arguments: ~
+
+  smb_location: \\file1\automation
+  cvad_vda_iso_location: "{{ smb_location }}\\Citrix\\Citrix Virtual Apps and Desktops\\{{ cvad_vda_version }}"
+  cvad_vda_iso_file: "{{ cvad_vda_versions[cvad_vda_version].iso_file }}"
+  cvad_vda_install_file_location: x64\XenDesktop Setup
+  cvad_vda_install_file: XenDesktopVDASetup.exe
+  cvad_vda_install_arguments: "/components {{ cvad_vda_components[cvad_vda_component].install_arguments }} {{ cvad_vda_versions[cvad_vda_version].install_arguments }} {{ cvad_vda_includeadditional_arguments }} {{ cvad_vda_exclude_arguments }} {{ cvad_vda_provisioning_tools[cvad_vda_provisioning_tool].install_arguments }}"
+  cvad_vda_product_id: "{{ cvad_vda_versions[cvad_vda_version].product_id }}"
+  cvad_vda_install_state: present

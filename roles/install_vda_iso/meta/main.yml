@@ -1,0 +1,34 @@
+---
+dependencies:
+  - role: ctxcommunity.windows.rds_server
+    when: ansible_facts['distribution'] is search("Server")
+#   - role: ctxcommunity.windows.dotnet_48_framework_runtime
+#
+# The ctxcommunity.windows.rds_server role is still required for mullti-user
+# server installations and should be installed before attempting to install
+# the Citrix VDA role
+#
+# The ctxcommunity.windows.dotnet_48_framework_runtime role is required for the Citrix 2012 VDA
+# installation. The ctxcommunity.windows.dotnet_48_framework_runtime uses a handler and executes
+# a flush_handlers at the end of the tasks sequence. The flush_handlers task does not support
+# 'when' conditionals.
+
+galaxy_info:
+  role_name: install_vda_iso
+  author: Joe Shonk
+  description: Install the Citrix VDA from an .ISO file mounted from an SMB share
+  company: The Shonk Project
+
+  license: GPL-3.0-only
+
+  min_ansible_version: 2.9
+
+  platforms:
+   - name: Windows
+     versions:
+     - All
+
+  galaxy_tags:
+    - citrix
+    - cvad
+    - vda

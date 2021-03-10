@@ -1,0 +1,5 @@
+---
+  - name: Bind Certificate to Citrix Broker Service
+    win_shell: cmd.exe /c 'netsh http add sslcert ipport=0.0.0.0:443 certhash="{{ certificates[cvad_delivery_controller_certificate_name].certificate_pfx_thumbprint }}" appid={{ cvad_delivery_controller_product_id }}'
+    when: cvad_delivery_controller_import_and_bind_pfx_certificate == 'import_and_bind'
+    become: yes

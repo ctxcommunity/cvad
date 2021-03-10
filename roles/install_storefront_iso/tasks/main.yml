@@ -1,0 +1,43 @@
+---
+  - name: Mount Citrix Virtual Applications and Desktops ISO
+    win_shell: |
+      $mountResult = Mount-DiskImage -ImagePath '{{ cvad_storefront_iso_location }}\{{ cvad_storefront_iso_file }}'
+      $driveLetter = ($mountResult | Get-Volume).DriveLetter
+      return $driveLetter
+    register: mounted_iso_drive_letter
+    changed_when: false
+    become: yes
+
+  - name: "Install Citrix StoreFront from CVAD {{ cvad_storefront_version }} ISO"
+    win_package:
+      path: "{{ mounted_iso_drive_letter.stdout[0] }}:\\{{ cvad_storefront_install_file_location }}\\{{ cvad_storefront_install_file }}"
+      product_id: "{{ cvad_storefront_product_id }}"
+      arguments: "{{ cvad_storefront_install_arguments }}"
+      state: "{{ cvad_storefront_install_state }}"
+      notify: Reboot After CVAD StoreFront Installation
+
+  - name: Dismount Citrix Virtual Applications and Desktops ISO
+    win_shell: Dismount-DiskImage -ImagePath '{{ cvad_storefront_iso_location }}\{{ cvad_storefront_iso_file }}'
+    changed_when: false
+    become: yes
+
+  - name: Bind Certificate to IIS for Citrix StoreFront
+    win_iis_webbinding:
+      name: Default Web Site
+      protocol: https
+      port: 443
+      ip: '*'
+      certificate_hash: "{{ certificates[cvad_storefront_certificate_name].certificate_pfx_thumbprint }}"
+      state: present
+    when: cvad_storefront_import_and_bind_pfx_certificate == 'import_and_bind'
+
+  - name: Set CEIP for StoreFront
+    win_regedit:
+      path: HKLM:\SOFTWARE\Citrix\Telemetry\CEIP
+      name: Enabled
+      data: "{{ cvad_storefront_ceip_data }}"
+      type: dword
+      state: present
+
+  - name: Flush Handlers
+    meta: flush_handlers

@@ -1,0 +1,28 @@
+---
+  - name: Mount Citrix Virtual Applications and Desktops ISO
+    win_shell: |
+      $mountResult = Mount-DiskImage -ImagePath '{{ cvad_vda_iso_location }}\{{ cvad_vda_iso_file }}'
+      $driveLetter = ($mountResult | Get-Volume).DriveLetter
+      return $driveLetter
+    register: mounted_iso_drive_letter
+    changed_when: false
+    become: yes
+
+  - name: "Install Citrix Virtual Desktop Agent from CVAD {{ cvad_vda_version }} ISO"
+    win_package:
+      path: "{{ mounted_iso_drive_letter.stdout[0] }}:\\{{ cvad_vda_install_file_location }}\\{{ cvad_vda_install_file }}"
+      product_id: "{{ cvad_vda_product_id }}"
+      arguments: "{{ cvad_vda_install_arguments }}"
+      state: "{{ cvad_vda_install_state }}"
+      # Citrix throws a result code 3 on a successful install for some reason.  3010 = reboot required
+      expected_return_code: [0, 3, 3010]
+    # register: cvad_vda_iso
+    notify: Reboot After CVAD VDA Installation
+
+  - name: Dismount Citrix Virtual Applications and Desktops ISO
+    win_shell: Dismount-DiskImage -ImagePath '{{ cvad_vda_iso_location }}\{{ cvad_vda_iso_file }}'
+    changed_when: false
+    become: yes
+
+  - name: Flush Handlers
+    meta: flush_handlers

@@ -1,0 +1,26 @@
+---
+  cvad_director_versions:
+    1912 LTSR CU2:
+      iso_file: Citrix_Virtual_Apps_and_Desktops_7_1912_2000.iso
+      install_arguments: /components desktopdirector /noreboot /quiet
+      product_id: '{3C377B20-0634-4A6D-9024-0D18FDAD82E9}'
+    2012:
+      product_id:
+      iso_file: Citrix_Virtual_Apps_and_Desktops_7_2012.iso
+      install_arguments: /components desktopdirector /noreboot /quiet
+      product_id: '{CC29DDE4-C20A-4572-8402-A0EA63B0F208}'
+
+  smb_location: \\file1\automation
+
+  cvad_director_version: 1912 LTSR CU2
+  cvad_director_iso_location: "{{ smb_location }}\\Citrix\\Citrix Virtual Apps and Desktops\\{{ cvad_director_version }}"
+  cvad_director_iso_file: "{{ cvad_director_versions[cvad_director_version].iso_file }}"
+  cvad_director_install_file_location: x64\XenDesktop Setup
+  cvad_director_install_file: XenDesktopServerSetup.exe
+  cvad_director_install_arguments: "{{ cvad_director_versions[cvad_director_version].install_arguments }}"
+  cvad_director_product_id: "{{ cvad_director_versions[cvad_director_version].product_id }}"
+  cvad_director_install_state: present
+
+  # Set to import_and_bind or do_not_import_and_bind
+  cvad_director_import_and_bind_pfx_certificate: import_and_bind
+  cvad_director_certificate_name: wildcard2021

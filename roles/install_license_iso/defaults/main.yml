@@ -1,0 +1,24 @@
+---
+  cvad_license_versions:
+    1912 LTSR CU2:
+      iso_file: Citrix_Virtual_Apps_and_Desktops_7_1912_2000.iso
+      install_arguments: /components licenseserver /noreboot /quiet
+      product_id: '{386D0715-F44A-40E9-BD10-D81139BBDB7F}'
+    2012:
+      iso_file: Citrix_Virtual_Apps_and_Desktops_7_2012.iso
+      install_arguments: /components licenseserver /noreboot /quiet
+      product_id: '{ECF1488A-6F66-4FA4-B2A8-7FBD5BB86A58}'
+
+  smb_location: \\file1\automation
+
+# Options
+#  1912 LTSR CU2          (License Version 11.16.6.0 Build 32000)
+#  2012                   (License Version 11.16.6.0 Build 33000)
+  cvad_license_version: 1912 LTSR CU2
+  cvad_license_iso_location: "{{ smb_location }}\\Citrix\\Citrix Virtual Apps and Desktops\\{{ cvad_license_version }}"
+  cvad_license_iso_file: "{{ cvad_license_versions[cvad_license_version].iso_file }}"
+  cvad_license_install_file_location: x64\XenDesktop Setup
+  cvad_license_install_file: XenDesktopServerSetup.exe
+  cvad_license_install_arguments: "{{ cvad_license_versions[cvad_license_version].install_arguments }}"
+  cvad_license_product_id: "{{ cvad_license_versions[cvad_license_version].product_id }}"
+  cvad_license_install_state: present

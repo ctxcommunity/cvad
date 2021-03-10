@@ -1,0 +1,38 @@
+---
+# It is important to note that the StoreFront version is the same for both the
+# 1912 LTSR CU2 and 2012 distributions.
+#
+# If you select the 2012 distribution you will see the version of StoreFront
+# in Programs and Features show up as 1912 LTSR CU2
+
+  cvad_storefront_versions:
+    1912 LTSR CU2:
+      product_id: '{D25B95BB-B0AD-4D08-8056-F91EC1064608}'
+      iso_file: Citrix_Virtual_Apps_and_Desktops_7_1912_2000.iso
+      install_arguments: -silent
+    2012:
+      product_id: '{D25B95BB-B0AD-4D08-8056-F91EC1064608}'
+      iso_file: Citrix_Virtual_Apps_and_Desktops_7_2012.iso
+      install_arguments: -silent
+
+  smb_location: \\file1\automation
+
+# Options
+# 1912 LTSR CU2
+# 2012
+  cvad_storefront_version: 1912 LTSR CU2
+  cvad_storefront_iso_location: "{{ smb_location }}\\Citrix\\Citrix Virtual Apps and Desktops\\{{ cvad_storefront_version }}"
+  cvad_storefront_iso_file: "{{ cvad_storefront_versions[cvad_storefront_version].iso_file }}"
+  cvad_storefront_install_file_location: x64\Storefront
+  cvad_storefront_install_file: CitrixStoreFront-x64.exe
+  cvad_storefront_install_arguments: "{{ cvad_storefront_versions[cvad_storefront_version].install_arguments }}"
+  cvad_storefront_product_id: "{{ cvad_storefront_versions[cvad_storefront_version].product_id }}"
+  cvad_storefront_install_state: present
+
+  # Set to import_and_bind or do_not_import_and_bind
+  cvad_storefront_import_and_bind_pfx_certificate: import_and_bind
+  cvad_storefront_certificate_name: wildcard2021
+
+  #To Disable the StoreFront CEIP value for cvad_storefront_ceip_data to 0
+  #To Enable the StoreFront CEIP value for cvad_storefront_ceip_data to 1
+  cvad_storefront_ceip_data: 0

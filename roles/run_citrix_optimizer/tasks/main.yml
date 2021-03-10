@@ -1,0 +1,8 @@
+---
+# Run Citrix Optimizer
+  - name: "Run Citrix Optimizer Version {{ citrix_optimizer_version }} with Template {{ citrix_optimizer_template }}"
+    win_shell: |
+      push-location '{{ citrix_optimizer_smb_location }}'
+      .\{{ citrix_optimizer_file }} {{ citrix_optimizer_arguments }}
+      pop-location
+    become: yes
