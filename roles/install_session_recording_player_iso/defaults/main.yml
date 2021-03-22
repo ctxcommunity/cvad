@@ -6,12 +6,16 @@
     2012:
       iso_file: Citrix_Virtual_Apps_and_Desktops_7_2012.iso
       product_id: '{E87BD06A-4F55-46EB-86BD-505F86A0BE58}'
+    2103:
+      iso_file: Citrix_Virtual_Apps_and_Desktops_7_2103.iso
+      product_id: '{65863316-03da-4b46-8842-af4c431fd715}'
 
   smb_location: \\file1\automation
 
 # Options
 #  1912 LTSR CU2
 #  2012
+#  2103
   cvad_session_recording_player_version: 1912 LTSR CU2
   cvad_session_recording_player_iso_location: "{{ smb_location }}\\Citrix\\Citrix Virtual Apps and Desktops\\{{ cvad_session_recording_player_version }}"
   cvad_session_recording_player_iso_file: "{{ cvad_session_recording_player_versions[cvad_session_recording_player_version].iso_file }}"

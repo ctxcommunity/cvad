@@ -5,10 +5,13 @@
       install_arguments: /components desktopdirector /noreboot /quiet
       product_id: '{3C377B20-0634-4A6D-9024-0D18FDAD82E9}'
     2012:
-      product_id:
       iso_file: Citrix_Virtual_Apps_and_Desktops_7_2012.iso
       install_arguments: /components desktopdirector /noreboot /quiet
       product_id: '{CC29DDE4-C20A-4572-8402-A0EA63B0F208}'
+    2103:
+      iso_file: Citrix_Virtual_Apps_and_Desktops_7_2103.iso
+      install_arguments: /components desktopdirector /noreboot /quiet
+      product_id: '{4A5FE27E-F3EE-4A1A-9F61-D672FBAE98D3}'
 
   smb_location: \\file1\automation
 

@@ -21,6 +21,9 @@ cvad_session_recording_player_versions:
   2012:
     iso_file: Citrix_Virtual_Apps_and_Desktops_7_2012.iso
     product_id: '{E87BD06A-4F55-46EB-86BD-505F86A0BE58}'
+  2103:
+    iso_file: Citrix_Virtual_Apps_and_Desktops_7_2103.iso
+    product_id: '{65863316-03da-4b46-8842-af4c431fd715}'
 
   smb_location: \\\\file1\\automation
 
@@ -67,6 +70,7 @@ This variable is used as the lookup key for the cvad_session_recording_player_ve
 Possible Values are:
   1912 LTSR CU2   (default) : This will install the 1912 LTSR CU2 version of the Citrix Session Recording Player
   2012                      : This will install the 2012 version of the Citrix Session Recording Player
+  2103                      : This will install the 2103 version of the Citrix Session Recording Player
 
 The cvad_session_recording_player_iso_location variable aggregates the smb_location with the folder location of the .iso file
 including the variable cvad_session_recording_player_version as part of the folder location. The cvad_session_recording_player_iso_location

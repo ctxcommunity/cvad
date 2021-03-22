@@ -25,6 +25,11 @@ The defaults/main.yml contains the following variables and default values:
       iso_file: Citrix_Virtual_Apps_and_Desktops_7_2012.iso
       install_arguments: /components licenseserver /noreboot /quiet
       product_id: '{ECF1488A-6F66-4FA4-B2A8-7FBD5BB86A58}'
+    2103:
+      iso_file: Citrix_Virtual_Apps_and_Desktops_7_2103.iso
+      install_arguments: /components licenseserver /noreboot /quiet
+      product_id: '{17086151-418C-40D7-B25B-1E5AE2F76DD0}'
+
 
   smb_location: \\\\file1\\automation
 
@@ -71,6 +76,7 @@ This variable is used as the lookup key for the cvad_license_versions hash table
 Possible Values are:
   1912 LTSR CU2   (default) : This will install the 1912 LTSR CU2 version of the Citrix License Server
   2012                      : This will install the 2012 version of the Citrix License Server
+  2103                      : This will install the 2103 version of the Citrix License Server
 
 The cvad_license_iso_location variable aggregates the smb_location with the folder location of the .iso file
 including the variable cvad_license_version as part of the folder location. The cvad_license_iso_location

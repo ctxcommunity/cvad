@@ -23,6 +23,9 @@ cvad_session_recording_agent_versions:
   2012:
     iso_file: Citrix_Virtual_Apps_and_Desktops_7_2012.iso
     product_id: '{9B3DEC67-CE4B-4170-8EF7-1D29DAFEE151}'
+  2103:
+    iso_file: Citrix_Virtual_Apps_and_Desktops_7_2103.iso
+    product_id: '{7b0519a9-3c5c-4c54-85f7-26498bfe6b44}'
 
 cvad_session_recording_agent_servername: myservername.mycompany.com
 cvad_session_recording_agent_broker_protocol: HTTPS
@@ -73,8 +76,7 @@ This variable is used as the lookup key for the The cvad_session_recording_agent
 Possible Values are:
   1912 LTSR CU2   (default) : This will install the 1912 LTSR CU2 version of the Citrix Session Recording Agent
   2012                      : This will install the 2012 version of the Citrix Session Recording Agent
-
-????????
+  2103                      : This will install the 2103 version of the Citrix Session Recording Agent
 
 The cvad_session_recording_agent_iso_location variable aggregates the smb_location with the folder location of the .iso file
 including the variable cvad_session_recording_agent_version as part of the folder location. The cvad_session_recording_agent_iso_location

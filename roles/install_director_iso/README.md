@@ -28,6 +28,10 @@ The defaults/main.yml contains the following variables and default values:
       iso_file: Citrix_Virtual_Apps_and_Desktops_7_2012.iso
       install_arguments: /components desktopdirector /noreboot /quiet
       product_id: '{CC29DDE4-C20A-4572-8402-A0EA63B0F208}'
+    2103:
+      iso_file: Citrix_Virtual_Apps_and_Desktops_7_2103.iso
+      install_arguments: /components desktopdirector /noreboot /quiet
+      product_id: '{4A5FE27E-F3EE-4A1A-9F61-D672FBAE98D3}'
 
   smb_location: \\\\file1\\automation
 
@@ -79,6 +83,7 @@ This variable is used as the lookup key for the cvad_director_versions hash tabl
 Possible Values are:
   1912 LTSR CU2   (default) : This will install the 1912 LTSR CU2 version of the Citrix Director
   2012                      : This will install the 2012 version of the Citrix Director
+  2103                      : This will install the 2103 version of the Citrix Director
 
 The cvad_director_iso_location variable aggregates the smb_location with the folder location of the .iso file
 including the variable cvad_director_version as part of the folder location. The cvad_director_iso_location

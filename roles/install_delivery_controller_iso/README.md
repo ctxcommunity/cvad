@@ -27,6 +27,10 @@ The defaults/main.yml contains the following variables and default values:
       iso_file: Citrix_Virtual_Apps_and_Desktops_7_2012.iso
       install_arguments: /components controller,desktopstudio /configure_firewall /nosql /noreboot /quiet
       product_id: '{DD56A91F-F623-4917-B229-C9BE2DFC7925}'
+    2103:
+      iso_file: Citrix_Virtual_Apps_and_Desktops_7_2103.iso
+      install_arguments: /components controller,desktopstudio /configure_firewall /nosql /noreboot /quiet
+      product_id: '{07EBAA9B-5D49-4C86-9571-834F4BE05FA8}'
 
   smb_location: \\\\file1\\automation
 
@@ -77,6 +81,7 @@ This variable is used as the lookup key for the cvad_delivery_controller_version
 Possible Values are:
   1912 LTSR CU2   (default) : This will install the 1912 LTSR CU2 version of the Citrix Delivery Controller
   2012                      : This will install the 2012 version of the Citrix Delivery Controller
+  2103                      : This will install the 2103 version of the Citrix Delivery Controller
 
 The cvad_delivery_controller_iso_location variable aggregates the smb_location with the folder location of the .iso file
 including the variable cvad_delivery_controller_version as part of the folder location. The cvad_delivery_controller_iso_location

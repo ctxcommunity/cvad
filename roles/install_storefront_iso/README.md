@@ -34,6 +34,10 @@ The defaults/main.yml contains the following variables and default values:
       product_id: '{D25B95BB-B0AD-4D08-8056-F91EC1064608}'
       iso_file: Citrix_Virtual_Apps_and_Desktops_7_2012.iso
       install_arguments: -silent
+    2103:
+      product_id: '{D25B95BB-B0AD-4D08-8056-F91EC1064608}'
+      iso_file: Citrix_Virtual_Apps_and_Desktops_7_2012.iso
+      install_arguments: -silent
 
   smb_location: \\file1\automation
 
@@ -85,6 +89,7 @@ This variable is used as the lookup key for the cvad_storefront_versions hash ta
 Possible Values are:
   1912 LTSR CU2   (default) : This will install the 1912 LTSR CU2 version of the Citrix StoreFront Server
   2012                      : This will install the 2012 version of the Citrix StoreFront Server
+  2103                      : This will install the 2103 version of the Citrix StoreFront Server
 
 The cvad_storefront_iso_location variable aggregates the smb_location with the folder location of the .iso file
 including the variable cvad_storefront_version as part of the folder location. The cvad_storefront_iso_location
