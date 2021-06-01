@@ -21,6 +21,10 @@ The defaults/main.yml contains the following variables and default values:
       iso_file: Citrix_Virtual_Apps_and_Desktops_7_1912_2000.iso
       install_arguments: /components licenseserver /noreboot /quiet
       product_id: '{386D0715-F44A-40E9-BD10-D81139BBDB7F}'
+    1912 LTSR CU3:
+      iso_file: Citrix_Virtual_Apps_and_Desktops_7_1912_3000.iso
+      install_arguments: /components licenseserver /noreboot /quiet
+      product_id: '{17086151-418C-40D7-B25B-1E5AE2F76DD0}'
     2012:
       iso_file: Citrix_Virtual_Apps_and_Desktops_7_2012.iso
       install_arguments: /components licenseserver /noreboot /quiet
@@ -33,7 +37,7 @@ The defaults/main.yml contains the following variables and default values:
 
   smb_location: \\\\file1\\automation
 
-  cvad_license_version: 1912 LTSR CU2
+  cvad_license_version: 1912 LTSR CU3
   cvad_license_iso_location: "{{ smb_location }}\\\\Citrix\\\\Citrix Virtual Apps and Desktops\\\\{{ cvad_license_version }}"
   cvad_license_iso_file: "{{ cvad_license_versions[cvad_license_version].iso_file }}"
   cvad_license_install_file_location: x64\\XenDesktop Setup
@@ -74,7 +78,8 @@ The cvad_license_version variable is used to control which version of the Citrix
 This variable is used as the lookup key for the cvad_license_versions hash table.
 
 Possible Values are:
-  1912 LTSR CU2   (default) : This will install the 1912 LTSR CU2 version of the Citrix License Server
+  1912 LTSR CU2             : This will install the 1912 LTSR CU2 version of the Citrix License Server
+  1912 LTSR CU2   (default) : This will install the 1912 LTSR CU3 version of the Citrix License Server
   2012                      : This will install the 2012 version of the Citrix License Server
   2103                      : This will install the 2103 version of the Citrix License Server
 

@@ -3,6 +3,9 @@
     1912 LTSR CU2:
       iso_file: Citrix_Virtual_Apps_and_Desktops_7_1912_2000.iso
       product_id: '{1ADB4467-B2BB-4BD8-8721-4A7D848252FC}'
+    1912 LTSR CU3:
+      iso_file: Citrix_Virtual_Apps_and_Desktops_7_1912_3000.iso
+      product_id: '{2DC432AD-BA66-48BD-833E-B529C48D4277}'
     2012:
       iso_file: Citrix_Virtual_Apps_and_Desktops_7_2012.iso
       product_id: '{E87BD06A-4F55-46EB-86BD-505F86A0BE58}'
@@ -14,9 +17,10 @@
 
 # Options
 #  1912 LTSR CU2
+#  1912 LTSR CU3
 #  2012
 #  2103
-  cvad_session_recording_player_version: 1912 LTSR CU2
+  cvad_session_recording_player_version: 1912 LTSR CU3
   cvad_session_recording_player_iso_location: "{{ smb_location }}\\Citrix\\Citrix Virtual Apps and Desktops\\{{ cvad_session_recording_player_version }}"
   cvad_session_recording_player_iso_file: "{{ cvad_session_recording_player_versions[cvad_session_recording_player_version].iso_file }}"
   cvad_session_recording_player_install_file_location: x86\Session Recording

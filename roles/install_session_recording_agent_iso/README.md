@@ -16,16 +16,19 @@ Role Variables
 
 The defaults/main.yml contains the following variables and default values:
 
-cvad_session_recording_agent_versions:
-  1912 LTSR CU2:
-    iso_file: Citrix_Virtual_Apps_and_Desktops_7_1912_2000.iso
-    product_id: '{5C31D558-520E-4060-9A26-F4E87F52E822}'
-  2012:
-    iso_file: Citrix_Virtual_Apps_and_Desktops_7_2012.iso
-    product_id: '{9B3DEC67-CE4B-4170-8EF7-1D29DAFEE151}'
-  2103:
-    iso_file: Citrix_Virtual_Apps_and_Desktops_7_2103.iso
-    product_id: '{7b0519a9-3c5c-4c54-85f7-26498bfe6b44}'
+  cvad_session_recording_agent_versions:
+    1912 LTSR CU2:
+      iso_file: Citrix_Virtual_Apps_and_Desktops_7_1912_2000.iso
+      product_id: '{5C31D558-520E-4060-9A26-F4E87F52E822}'
+    1912 LTSR CU3:
+      iso_file: Citrix_Virtual_Apps_and_Desktops_7_1912_3000.iso
+      product_id: '{8F34D86E-E683-46B9-859A-60FD2699632A}'
+    2012:
+      iso_file: Citrix_Virtual_Apps_and_Desktops_7_2012.iso
+      product_id: '{9B3DEC67-CE4B-4170-8EF7-1D29DAFEE151}'
+    2103:
+      iso_file: Citrix_Virtual_Apps_and_Desktops_7_2103.iso
+      product_id: '{7b0519a9-3c5c-4c54-85f7-26498bfe6b44}'
 
 cvad_session_recording_agent_servername: myservername.mycompany.com
 cvad_session_recording_agent_broker_protocol: HTTPS
@@ -33,7 +36,7 @@ cvad_session_recording_agent_broker_port: 443
 
 smb_location: \\\\file1\\\automation
 
-cvad_session_recording_agent_version: 1912 LTSR CU2
+cvad_session_recording_agent_version: 1912 LTSR CU3
 cvad_session_recording_agent_iso_location: "{{ smb_location }}\\\\Citrix\\\\Citrix Virtual Apps and Desktops\\\\{{ cvad_session_recording_agent_version }}"
 cvad_session_recording_agent_iso_file: "{{ cvad_session_recording_agent_versions[cvad_session_recording_agent_version].iso_file }}"
 cvad_session_recording_agent_install_file_location: x64\\Session Recording
@@ -74,7 +77,8 @@ The cvad_session_recording_agent_version variable is used to control which versi
 This variable is used as the lookup key for the The cvad_session_recording_agent_versions hash table.
 
 Possible Values are:
-  1912 LTSR CU2   (default) : This will install the 1912 LTSR CU2 version of the Citrix Session Recording Agent
+  1912 LTSR CU2             : This will install the 1912 LTSR CU2 version of the Citrix Session Recording Agent
+  1912 LTSR CU3   (default) : This will install the 1912 LTSR CU3 version of the Citrix Session Recording Agent
   2012                      : This will install the 2012 version of the Citrix Session Recording Agent
   2103                      : This will install the 2103 version of the Citrix Session Recording Agent
 

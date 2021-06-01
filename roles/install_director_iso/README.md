@@ -23,8 +23,11 @@ The defaults/main.yml contains the following variables and default values:
       iso_file: Citrix_Virtual_Apps_and_Desktops_7_1912_2000.iso
       install_arguments: /components desktopdirector /noreboot /quiet
       product_id: '{3C377B20-0634-4A6D-9024-0D18FDAD82E9}'
+    1912 LTSR CU3:
+      iso_file: Citrix_Virtual_Apps_and_Desktops_7_1912_2000.iso
+      install_arguments: /components desktopdirector /noreboot /quiet
+      product_id: '{211E5795-E4AD-4BFD-A63F-148F91773DFD}'
     2012:
-      product_id:
       iso_file: Citrix_Virtual_Apps_and_Desktops_7_2012.iso
       install_arguments: /components desktopdirector /noreboot /quiet
       product_id: '{CC29DDE4-C20A-4572-8402-A0EA63B0F208}'
@@ -35,7 +38,7 @@ The defaults/main.yml contains the following variables and default values:
 
   smb_location: \\\\file1\\automation
 
-  cvad_director_version: 1912 LTSR CU2
+  cvad_director_version: 1912 LTSR CU3
   cvad_director_iso_location: "{{ smb_location }}\\\\Citrix\\\\Citrix Virtual Apps and Desktops\\\\{{ cvad_director_version }}"
   cvad_director_iso_file: "{{ cvad_director_versions[cvad_director_version].iso_file }}"
   cvad_director_install_file_location: x64\\XenDesktop Setup
@@ -81,7 +84,8 @@ The cvad_director_version variable is used to control which version of the Citri
 This variable is used as the lookup key for the cvad_director_versions hash table.
 
 Possible Values are:
-  1912 LTSR CU2   (default) : This will install the 1912 LTSR CU2 version of the Citrix Director
+  1912 LTSR CU2             : This will install the 1912 LTSR CU3 version of the Citrix Director
+  1912 LTSR CU3   (default) : This will install the 1912 LTSR CU2 version of the Citrix Director
   2012                      : This will install the 2012 version of the Citrix Director
   2103                      : This will install the 2103 version of the Citrix Director
 

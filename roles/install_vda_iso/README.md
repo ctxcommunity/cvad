@@ -23,19 +23,23 @@ https://docs.citrix.com/en-us/citrix-virtual-apps-desktops/install-configure/ins
 
 The defaults/main.yml contains the following variables and default values:
 
-cvad_vda_versions:
-  1912 LTSR CU2:
-    product_id: '{89BD0C39-1C8E-44D2-9923-1167EAB7BEEB}'
-    iso_file: Citrix_Virtual_Apps_and_Desktops_7_1912_2000.iso
-    install_arguments: /enable_hdx_ports /enable_hdx_udp_ports /disableexperiencemetrics /enable_real_time_transport /enable_remote_assistance /noreboot /quiet
-  2012:
-    product_id: '{C344C994-94D2-45EC-AD93-0EBBA1E9D5DD}'
-    iso_file: Citrix_Virtual_Apps_and_Desktops_7_2012.iso
-    install_arguments: /enable_hdx_ports /enable_hdx_udp_ports /disableexperiencemetrics /enable_real_time_transport /enable_remote_assistance /noreboot /quiet
-  2103:
-    product_id: '{4DE30E2C-86D2-49A5-BD2C-A5EECF13E0CE}'
-    iso_file: Citrix_Virtual_Apps_and_Desktops_7_2103.iso
-    install_arguments: /enable_hdx_ports /enable_hdx_udp_ports /disableexperiencemetrics /enable_real_time_transport /enable_remote_assistance /noreboot /quiet
+  cvad_vda_versions:
+    1912 LTSR CU2:
+      product_id: '{89BD0C39-1C8E-44D2-9923-1167EAB7BEEB}'
+      iso_file: Citrix_Virtual_Apps_and_Desktops_7_1912_2000.iso
+      install_arguments: /enable_hdx_ports /enable_hdx_udp_ports /disableexperiencemetrics /enable_real_time_transport /enable_remote_assistance /noreboot /quiet
+    1912 LTSR CU3:
+      product_id: '{7B310D75-AA4E-4AA2-A339-A173359EC95E}'
+      iso_file: Citrix_Virtual_Apps_and_Desktops_7_1912_3000.iso
+      install_arguments: /enable_hdx_ports /enable_hdx_udp_ports /disableexperiencemetrics /enable_real_time_transport /enable_remote_assistance /noreboot /quiet
+    2012:
+      product_id: '{C344C994-94D2-45EC-AD93-0EBBA1E9D5DD}'
+      iso_file: Citrix_Virtual_Apps_and_Desktops_7_2012.iso
+      install_arguments: /enable_hdx_ports /enable_hdx_udp_ports /disableexperiencemetrics /enable_real_time_transport /enable_remote_assistance /noreboot /quiet
+    2103:
+      product_id: '{4DE30E2C-86D2-49A5-BD2C-A5EECF13E0CE}'
+      iso_file: Citrix_Virtual_Apps_and_Desktops_7_2103.iso
+      install_arguments: /enable_hdx_ports /enable_hdx_udp_ports /disableexperiencemetrics /enable_real_time_transport /enable_remote_assistance /noreboot /quiet
 
 https://docs.citrix.com/en-us/citrix-virtual-apps-desktops-service/install-configure/install-command.html
 cvad_vda_provisioning_tools:
@@ -56,6 +60,7 @@ cvad_vda_components:
 
 # Options are
 #   1912 LTSR CU2
+#   1912 LTSR CU3
 #   2012
 cvad_vda_version: 2012
 # Options are
@@ -63,7 +68,7 @@ cvad_vda_version: 2012
 #   mcs
 #   remotepc
 #   none
-cvad_vda_provisioning_tool: mcs
+cvad_vda_provisioning_tool: pvs
 # Options are
 #   vda only
 #   vda with workspace app
@@ -123,7 +128,8 @@ The cvad_vda_version variable is used to control which version of the Citrix VDA
 This variable is used as the lookup key for the cvad_vda_versions hash table.
 
 Possible Values are:
-  1912 LTSR CU2   (default) : This will install the 1912 LTSR CU2 version of the Citrix VDA
+  1912 LTSR CU2             : This will install the 1912 LTSR CU2 version of the Citrix VDA
+  1912 LTSR CU3   (default) : This will install the 1912 LTSR CU3 version of the Citrix VDA
   2012                      : This will install the 2012 version of the Citrix VDA
   2103                      : This will install the 2103 version of the Citrix VDA
 
@@ -132,10 +138,10 @@ The cvad_vda_provisioning_tool variable is used to control which version of the 
 This variable is used as the lookup key for the cvad_vda_provisioning_tools hash table.
 
 Possible Values are:
-  msc             (default) : This will install the 1912 LTSR CU2 version of the Citrix VDA
-  pvs                       : This will install the 2012 version of the Citrix VDA
-  remotepc                  : This will install the 2012 version of the Citrix VDA
-  none                      : This will install the 2012 version of the Citrix VDA
+  msc                       : Installs additional VDA components for MCS
+  pvs             (default) : Installs additional VDA components for PVS
+  remotepc                  : Installs VDA for use as RemotePC
+  none                      : No additional provisioning components installed
 
 The cvad_vda_component variable is used to control which version of the Citrix VDA will be installed.
 This variable is used as the lookup key for the cvad_vda_components hash table.

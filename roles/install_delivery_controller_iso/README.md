@@ -23,6 +23,10 @@ The defaults/main.yml contains the following variables and default values:
       iso_file: Citrix_Virtual_Apps_and_Desktops_7_1912_2000.iso
       install_arguments: /components controller,desktopstudio /configure_firewall /nosql /noreboot /quiet
       product_id: '{65568E93-FF7E-4CF4-88C8-8EF288D92EB1}'
+    1912 LTSR CU3:
+      iso_file: Citrix_Virtual_Apps_and_Desktops_7_1912_3000.iso
+      install_arguments: /components controller,desktopstudio /configure_firewall /nosql /noreboot /quiet
+      product_id: '{99E67721-8766-432A-83C2-1E55ED5517F3}'
     2012:
       iso_file: Citrix_Virtual_Apps_and_Desktops_7_2012.iso
       install_arguments: /components controller,desktopstudio /configure_firewall /nosql /noreboot /quiet
@@ -34,7 +38,7 @@ The defaults/main.yml contains the following variables and default values:
 
   smb_location: \\\\file1\\automation
 
-  cvad_delivery_controller_version: 1912 LTSR CU2
+  cvad_delivery_controller_version: 1912 LTSR CU3
   cvad_delivery_controller_iso_location: "{{ smb_location }}\\\\Citrix\\\\Citrix Virtual Apps and Desktops\\\\{{ cvad_delivery_controller_version }}"
   cvad_delivery_controller_iso_file: "{{ cvad_delivery_controller_versions[cvad_delivery_controller_version].iso_file }}"
   cvad_delivery_controller_install_file_location: x64\\XenDesktop Setup
@@ -79,7 +83,8 @@ The cvad_delivery_controller_version variable is used to control which version o
 This variable is used as the lookup key for the cvad_delivery_controller_versions hash table.
 
 Possible Values are:
-  1912 LTSR CU2   (default) : This will install the 1912 LTSR CU2 version of the Citrix Delivery Controller
+  1912 LTSR CU2             : This will install the 1912 LTSR CU2 version of the Citrix Delivery Controller
+  1912 LTSR CU3   (default) : This will install the 1912 LTSR CU3 version of the Citrix Delivery Controller
   2012                      : This will install the 2012 version of the Citrix Delivery Controller
   2103                      : This will install the 2103 version of the Citrix Delivery Controller
 

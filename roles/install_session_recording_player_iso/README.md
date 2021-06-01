@@ -14,20 +14,23 @@ Role Variables
 
 The defaults/main.yml contains the following variables and default values:
 
-cvad_session_recording_player_versions:
-  1912 LTSR CU2:
-    iso_file: Citrix_Virtual_Apps_and_Desktops_7_1912_2000.iso
-    product_id: '{1ADB4467-B2BB-4BD8-8721-4A7D848252FC}'
-  2012:
-    iso_file: Citrix_Virtual_Apps_and_Desktops_7_2012.iso
-    product_id: '{E87BD06A-4F55-46EB-86BD-505F86A0BE58}'
-  2103:
-    iso_file: Citrix_Virtual_Apps_and_Desktops_7_2103.iso
-    product_id: '{65863316-03da-4b46-8842-af4c431fd715}'
+  cvad_session_recording_player_versions:
+    1912 LTSR CU2:
+      iso_file: Citrix_Virtual_Apps_and_Desktops_7_1912_2000.iso
+      product_id: '{1ADB4467-B2BB-4BD8-8721-4A7D848252FC}'
+    1912 LTSR CU3:
+      iso_file: Citrix_Virtual_Apps_and_Desktops_7_1912_3000.iso
+      product_id: '{2DC432AD-BA66-48BD-833E-B529C48D4277}'
+    2012:
+      iso_file: Citrix_Virtual_Apps_and_Desktops_7_2012.iso
+      product_id: '{E87BD06A-4F55-46EB-86BD-505F86A0BE58}'
+    2103:
+      iso_file: Citrix_Virtual_Apps_and_Desktops_7_2103.iso
+      product_id: '{65863316-03da-4b46-8842-af4c431fd715}'
 
   smb_location: \\\\file1\\automation
 
-  cvad_session_recording_player_version: 1912 LTSR CU2
+  cvad_session_recording_player_version: 1912 LTSR CU3
   cvad_session_recording_player_iso_location: "{{ smb_location }}\\\\Citrix\\\\Citrix Virtual Apps and Desktops\\\\{{ cvad_session_recording_player_version }}"
   cvad_session_recording_player_iso_file: "{{ cvad_session_recording_player_versions[cvad_session_recording_player_version].iso_file }}"
   cvad_session_recording_player_install_file_location: x86\\Session Recording
@@ -68,7 +71,8 @@ The cvad_session_recording_player_version variable is used to control which vers
 This variable is used as the lookup key for the cvad_session_recording_player_versions hash table.
 
 Possible Values are:
-  1912 LTSR CU2   (default) : This will install the 1912 LTSR CU2 version of the Citrix Session Recording Player
+  1912 LTSR CU2             : This will install the 1912 LTSR CU2 version of the Citrix Session Recording Player
+  1912 LTSR CU3   (default) : This will install the 1912 LTSR CU3 version of the Citrix Session Recording Player
   2012                      : This will install the 2012 version of the Citrix Session Recording Player
   2103                      : This will install the 2103 version of the Citrix Session Recording Player
 
